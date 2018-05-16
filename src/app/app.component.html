@@ -1,0 +1,64 @@
+<div id="fullPage">
+  <app-header></app-header>
+  <!-- <div *ngIf="tologin">
+    <app-login-form></app-login-form>
+  </div> -->
+  <!-- <app-login-form></app-login-form> -->
+<link href="https://stackpath.bootstrapcdn.com/bootswatch/4.0.0/cosmo/bootstrap.min.css" rel="stylesheet" integrity="sha384-UU2jkdv1M9UEjLje/kygVxqMBq9Jrg9z+Gqvw972H6BqKTzDvLaRJfK7PnzLM4SI" crossorigin="anonymous">
+<script type="text/javascript" src="Scripts/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    var host = "startbootstrap.com";
+    if ((host == window.location.host) && (window.location.protocol != "https:"))
+      window.location.protocol = "https";
+  </script>
+  <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.0.0/cosmo/bootstrap.min.css" rel="stylesheet" integrity="sha384-UU2jkdv1M9UEjLje/kygVxqMBq9Jrg9z+Gqvw972H6BqKTzDvLaRJfK7PnzLM4SI" crossorigin="anonymous">
+
+  <div *ngIf="user.getuserLoggedin()">
+  <!-- <div *ngIf="welmsg"> -->
+  <!-- <app-login-form (messageEvent)="recieveMessage($event)" class="ng-hide"></app-login-form> -->
+<!-- </div> -->
+  <!-- <div>{{model.message}}</div> -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarColor02">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/dashboard">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/features']">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/fetchdata">Devices</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/add-device">Add New Device</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/graph">Show Graph</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/devicediscovery">Device Discovery</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" routerLink="/discoverdevices">Discover Devices</a>
+        </li> -->
+       </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <a class="nav-link" href="/">Logout</a>
+      </form>
+    </div>
+  </nav>
+  <br>
+  
+    
+
+</div>
+
+
+<router-outlet></router-outlet>

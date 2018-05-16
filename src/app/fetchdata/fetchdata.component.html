@@ -1,0 +1,22 @@
+<div>
+
+  <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Index</th>
+          <th scope="col">Device Id</th>
+          <th scope="col">Type Id</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-active" *ngFor="let device of model.devices.results; let i=index;">
+          <td>{{i+1}}</td>
+          <td>{{device.deviceId | json}}</td>
+          <td>{{device.typeId | json}}</td>
+          <td (click)="deleteDevice(device.deviceId)" id="i" ng-value="myVar"><a color=red>DELETE</a></td>
+          <td (click)="showAuth(device)"><a>Show Authentication Token</a></td>
+          <td >{{device['authToken']}}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>

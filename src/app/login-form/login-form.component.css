@@ -1,0 +1,25 @@
+:host {
+    flex-grow:1;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+
+div.input {
+    position:relative;
+}
+
+div.input label {
+    position: absolute;
+    top:0;
+    transform:translate(-50%);
+    left:50px;
+    background:white;
+     padding:0px 0px; 
+}
+
+div.input input {
+    padding:10px 20px;
+    font-size:25px;
+    outline:0;
+}
