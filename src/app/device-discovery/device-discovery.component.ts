@@ -18,7 +18,7 @@ export class DeviceDiscoveryComponent implements OnInit {
   isAdded:boolean=false;
   temp:any
   obj:object;
-  flag:number=0;
+  flag:number;
 
   constructor(private http:Http,private dataService: DataService) { }
 
@@ -49,10 +49,10 @@ export class DeviceDiscoveryComponent implements OnInit {
   
 
   ngOnInit() {
-    this.flag=0;
+   
     this.http.post("http://localhost:3000","").subscribe(res=>{
       console.log(res);
-      
+      this.flag=0;
       this.sub = this.dataService.getQuotes()
       .subscribe(quote => {
         console.log(quote);
@@ -62,6 +62,7 @@ export class DeviceDiscoveryComponent implements OnInit {
             this.flag=this.flag+1;
           }
         }
+        console.log(this.flag);
         if(this.flag==0){
          this.stockQuote.push(quote);
         }
