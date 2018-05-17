@@ -22,7 +22,7 @@ export class AddDeviceComponent implements OnInit {
     "devicedesc":product.subject
     }
     console.log(product.devicename+" "+product.devicetype+" "+product.classname+" "+product.subject);
-    this.http.post("http://localhost:3000/display/add",this.productObj).subscribe((res:Response) => {
+    this.http.post("http://192.168.31.133:3000/display/adddev",this.productObj).subscribe((res:Response) => {
     this.model.isAdded=true;
     //console.log(res);
     this.model.auth=res['_body'];

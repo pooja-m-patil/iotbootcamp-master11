@@ -42,7 +42,7 @@ export class RetrivedataComponent implements OnInit {
         "name": id.name
       }
     //console.log(options.body.name);
-      this.http.get('http://localhost:3000/display/datafetch', this.devObj,{headers:headers})
+      this.http.get('http://192.168.31.133:3000/display/datafetch', this.devObj,{headers:headers})
       .subscribe((res:Response) =>{
         console.log("response");
         return res;

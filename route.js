@@ -101,12 +101,12 @@ app.post("/add", function (request, response) {
     //{
       server.addDevice(devicename,function(data){
         console.log(data.authToken);
-        //var deviceId=data.deviceId;
+        var deviceId=data.deviceId;
         // mydbiot.insert(data,deviceId, function(err) {
         //   if (err) {
         //     return console.log('[mydbiot.insert]', err.message);
         //   }
-    //     // });
+       //});
        if(data.authToken){
     response.send(data.authToken);
         }
@@ -121,6 +121,36 @@ app.post("/add", function (request, response) {
     //response.send("Error!! Please Enter valid name");
   //}
 });
+
+
+app.post("/adddev", function (request, response) {
+    
+  var devicename=request.body.devicename;
+  var devicetype=request.body.devicetype;
+  var classname=request.body.deviceclass;
+  var subject=request.body.devicedesc;
+  
+  console.log(classname+" "+subject);
+  //found=devicename.match(/[a-z]{1,7}/);
+  //if(found)
+  //{
+    server.regDevice(devicename,devicetype,classname,subject,function(data){
+      console.log(data.authToken);
+      var deviceId=data.deviceId;
+      mydbiot.insert(data,deviceId, function(err) {
+        if (err) {
+          return console.log('[mydbiot.insert] ', err.message);
+        }
+      });
+  response.send("Device Added successfully. Auth Token is : "+data.authToken);
+});
+//}
+//else
+//{
+  //response.send("Error!! Please Enter valid name");
+//}
+});
+
 
 app.get("/", function (request, response) {
 	server.getDevices(function(data){

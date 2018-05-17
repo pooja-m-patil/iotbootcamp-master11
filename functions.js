@@ -76,14 +76,37 @@ exports.addDevice=function(devicename,callback)
 	});
 }
 
-exports.getDevicesInfo=function(id,callback)
+exports.regDevice=function(devicename,devicetype,classname,subject,callback)
 {
-  console.log(id);
-  mydbiot.get(id,function(err, data) {
-    console.log('Error:', err);
-    console.log(data.authToken);
-    callback(data.authToken);
-});
+  console.log(devicename+" "+devicetype+" "+classname+" "+subject);
+	var result;
+	var options = { method: 'POST',
+  url: 'https://tgacg8.internetofthings.ibmcloud.com/api/v0002/device/types/iotbootcamp/devices',
+  headers: 
+   { 'Postman-Token': '8bd972f8-1170-466a-a931-ee93601a6213',
+     'Cache-Control': 'no-cache',
+     Authorization: 'Basic YS10Z2FjZzgtcDNoZXlmMWMxZzpvRm1jZ1RlaUNCd0BRNCp2aig=',
+     'Content-Type': 'application/json' },
+  body: 
+   { deviceId: devicename,
+     deviceInfo: 
+      { serialNumber: '100087',
+        manufacturer: 'ACME Co.',
+        model: '7865',
+        deviceClass: classname,
+        description: subject,
+        fwVersion: '1.0.0',
+        hwVersion: '1.0',
+        descriptiveLocation: 'Office 5, D Block' } },
+  json: true };
+
+  request(options, function (error, response, body) {
+    if (error) throw new Error(error)
+    else 
+    console.log(response.body);
+
+    callback(response.body); 
+	});
 }
 
 
@@ -121,7 +144,15 @@ request(options, function (error, response, body) {
 })
 }
 
-
+exports.getDevicesInfo=function(id,callback)
+{
+  console.log(id);
+  mydbiot.get(id,function(err, data) {
+    console.log('Error:', err);
+    console.log(data.authToken);
+    callback(data.authToken);
+});
+}
 
 // exports.getData=function(callback)
 // {

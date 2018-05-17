@@ -30,7 +30,7 @@ app.use(express.static(__dirname + '/views'));
 
 
 app.use(function (req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+  res.setHeader('Access-Control-Allow-Origin', 'http://192.168.31.133:4200');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   res.setHeader('Access-Control-Allow-Credentials', true);
@@ -63,7 +63,9 @@ app.post("/",function(req,res){
     console.log(deviceId);
     if(temp==deviceId){
     
-     
+      socket.emit('disconnect', 
+      {devId:"disconnected"}
+    )
     res.send(auth);
     }
     else{

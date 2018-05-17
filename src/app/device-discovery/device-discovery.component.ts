@@ -28,7 +28,7 @@ export class DeviceDiscoveryComponent implements OnInit {
     "devicename":id
     }
     console.log(id);
-    this.http.post("http://localhost:3000/display/add",this.productObj).subscribe((res:Response) => {
+    this.http.post("http://192.168.31.133:3000/display/add",this.productObj).subscribe((res:Response) => {
     
     console.log(res);
     this.temp=res['_body'];
@@ -38,9 +38,24 @@ export class DeviceDiscoveryComponent implements OnInit {
       "added":this.temp,
       "id":id
     }
-     this.http.post("http://localhost:3000",this.obj).subscribe((res:Response) => {
+     this.http.post("http://192.168.31.133:3000",this.obj).subscribe((res:Response) => {
+      // for(let i=0;i<this.stockQuote.length;i++){
+      //   if(id==this.stockQuote[i]){
+      //     for(let j=i;j<this.stockQuote.length;j++){
+      //       this.stockQuote[i]=this.stockQuote[i+1];
+      //     }
+      //   }
+      // }
 
-
+      // for(let i=0;i<this.stockQuote.length;i++){
+      //   if(id==this.stockQuote[i]){
+      //     for(let j=i;j<this.stockQuote.length-1;j++){
+      //            this.stockQuote[j]=this.stockQuote[j+1];
+      //            this.stockQuote[j+1]="";
+      //       }
+      //   }
+      // }
+     
     })
      })
     
@@ -50,7 +65,7 @@ export class DeviceDiscoveryComponent implements OnInit {
 
   ngOnInit() {
    
-    this.http.post("http://localhost:3000","").subscribe(res=>{
+    this.http.post("http://192.168.31.133:3000","").subscribe(res=>{
       console.log(res);
       this.flag=0;
       this.sub = this.dataService.getQuotes()

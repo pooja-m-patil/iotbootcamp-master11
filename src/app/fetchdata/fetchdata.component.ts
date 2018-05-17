@@ -25,7 +25,7 @@ export class FetchdataComponent implements OnInit {
       }
     });
     if(confirm("Are you sure?")) {
-      this.http.delete('http://localhost:3000/display/del', options)
+      this.http.delete('http://192.168.31.133:3000/display/del', options)
       .subscribe((res:Response) =>{
         this.model.isDeleted=true;
         this.model.deleted=id;
@@ -46,7 +46,7 @@ showAuth=function(device)
           "name": id
         }
       
-        this.http.post('http://localhost:3000/display/datafetch', this.devObj)
+        this.http.post('http://192.168.31.133:3000/display/datafetch', this.devObj)
         .subscribe((res:Response) =>{
           this.model.Token=id;
           device.authToken =  res['_body'];
@@ -61,7 +61,7 @@ showAuth=function(device)
 
   ngOnInit() {
     console.log("uname "+this.model.uname);
-    this.http.get("http://localhost:3000/display").subscribe(res=>{
+    this.http.get("http://192.168.31.133:3000/display").subscribe(res=>{
         this.model.isFetch=true;
         this.model.devices=res.json();
         console.log(this.model.devices);

@@ -43,7 +43,7 @@ export class GraphComponent implements OnInit {
      this.ref=[];
      this.map=[];
      this.selectedAreaItems=[];
-      this.http.get("http://localhost:3000/display/mapping").subscribe(res=>{
+      this.http.get("http://192.168.31.133:3000/display/mapping").subscribe(res=>{
         var temp1=res.json();
         for(let i=0,c=0,m=0;i<4;i++)
         {
@@ -114,7 +114,7 @@ export class GraphComponent implements OnInit {
         "array":this.selectedAreaItems[a]
       }
 
-      this.http.post("http://localhost:3000/display/graph",this.month).subscribe(res=>{
+      this.http.post("http://192.168.31.133:3000/display/graph",this.month).subscribe(res=>{
       
         var temp=res.json();
         for(let l=0;l<temp.length;l++)
@@ -160,7 +160,7 @@ export class GraphComponent implements OnInit {
   ngOnInit() {
     this.selectedCityItems=[];
     
-    this.http.get("http://localhost:3000/display/cities").subscribe(res=>{
+    this.http.get("http://192.168.31.133:3000/display/cities").subscribe(res=>{
       var temp=res.json();
       console.log(temp);
       for(let i=0;i<3;i++)

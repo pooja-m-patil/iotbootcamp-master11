@@ -17,7 +17,7 @@ export class DataService {
   observer: Observer<any>;
 
   getQuotes() : Observable<any> {
-    this.socket = socketIo('http://localhost:3000');
+    this.socket = socketIo('http://192.168.31.133:3000');
 
     this.socket.on('message', (res) => {
       this.observer.next(res.devId);

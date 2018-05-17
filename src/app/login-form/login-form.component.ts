@@ -32,7 +32,7 @@ export class LoginFormComponent implements OnInit {
     }
 
 
-    this.http.post('http://localhost:3000/display/login', this.loginObj)
+    this.http.post('http://192.168.31.133:3000/display/login', this.loginObj)
         .subscribe((res:Response) =>{
         var temp=res['_body'];
           
