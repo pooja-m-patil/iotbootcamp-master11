@@ -2,3 +2,17 @@
 <p>
   device-discovery works!
 </p>
+<!-- <input type="button" value="Discover" (click)="discover()"> -->
+
+<table class="table table-hover">
+  <tbody>
+    <tr class="table-active" *ngFor="let device of stockQuote; let i=index;">
+     <td>{{i}}</td>
+     <td>{{device}}</td>
+     <td (click)="discdevice(device)"><a>Add</a></td>
+    </tr>
+  </tbody>
+</table>
+<h3 *ngIf="isAdded">{{temp}}</h3>
+
+

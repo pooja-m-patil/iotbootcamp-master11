@@ -19,6 +19,8 @@ import { FeaturesComponent } from './features/features.component';
 import { FetchdataComponent } from './fetchdata/fetchdata.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { DeviceDiscoveryComponent } from './device-discovery/device-discovery.component';
+import { DataService } from './data.service';
+
 
 //import {AppRoutingModule} from './app-routing.module';
 //import { Model } from './model';
@@ -94,7 +96,7 @@ const appRoutes:Routes=[
     NgMultiSelectDropDownModule.forRoot()
     //AppRoutingModule
   ],
-  providers: [UserService,AuthguardGuard],
+  providers: [UserService,AuthguardGuard,DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

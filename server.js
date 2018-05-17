@@ -7,23 +7,17 @@ var express1=require('express-validation');
 var router = express.Router();
 //var server = require('./server.js');
 var route=require('./route');
-var socket=require('socket.io');
+var socketIo=require('socket.io');
+var disc=require('./discovery');
+var status;
+var auth;
+var deviceId;
+var temp;
 
-
-
-
-
-// server.listen(config.port, config.ip, function () {
-//     console.log('Express server listening on %d, in %s mode', config.port, 
-//     app.get('env'));
-// });
 
 var server=app.listen(3000, function() {
   console.log("Listening on port:3000");
 });
-
-
-
 
 
 app.use(bodyParser.json())
@@ -47,20 +41,51 @@ app.use(function (req, res, next) {
 
 app.use('/display',route);
 
-var io=socket(server);
+var io=socketIo(server);
   
-app.get("/",function(request,response){
-  io.sockets.on('connection',function(socket){
-    
-    console.log('A new WebSocket connection has been established');
+app.post("/",function(req,res){
+
+    if(req.body.deviceId){
+      deviceId=req.body.deviceId;
+    }
+    if(req.body.added){
+      status=true;
+      auth=req.body.added;
+    }
+    if(req.body.id){
+      temp=req.body.id;
+    }
   
-    socket.emit('message', {
-      name:"pp"
-    });
+    console.log(status);
+  if(status){
+    console.log(status);
+    console.log(temp);
+    console.log(deviceId);
+    if(temp==deviceId){
     
+     
+    res.send(auth);
+    }
+    else{
+      res.send("");
+    }
+  }
+  else{
+    var dId=req.body.deviceId;
+    console.log(dId);
+    //To store in db
+    // disc.deviceDisc(deviceId,desc,function(data){
+    //   res.send(data);
+    // })
+    io.on('connection',(socket)=>{
+   //console.log("A new WebSocket connection has been established");
+    socket.emit('message', 
+      {devId:dId}
+    )
+  })
 
-});
-
+  res.send("");
+}
 })
 
 

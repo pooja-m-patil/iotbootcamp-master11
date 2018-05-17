@@ -44,9 +44,8 @@ if (appEnv.services['cloudantNoSQLDB'] || appEnv.getService(/cloudant/)) {
 
 
 //Add new device...........................
-exports.addDevice=function(devicename,devicetype,classname,subject,callback)
+exports.addDevice=function(devicename,callback)
 {
-  console.log(devicename+" "+devicetype+" "+classname+" "+subject);
 	var result;
 	var options = { method: 'POST',
   url: 'https://tgacg8.internetofthings.ibmcloud.com/api/v0002/device/types/iotbootcamp/devices',
@@ -61,8 +60,8 @@ exports.addDevice=function(devicename,devicetype,classname,subject,callback)
       { serialNumber: '100087',
         manufacturer: 'ACME Co.',
         model: '7865',
-        deviceClass: classname,
-        description: subject,
+        deviceClass: 'A',
+        description: 'iot',
         fwVersion: '1.0.0',
         hwVersion: '1.0',
         descriptiveLocation: 'Office 5, D Block' } },
