@@ -80,6 +80,7 @@ export class GraphComponent implements OnInit {
 
   graph=function(e)
   {
+    this.status=0;
     this.chartData2=[];
     this.chartLabels=[];
     this.date=[];
@@ -115,7 +116,7 @@ export class GraphComponent implements OnInit {
       }
 
       this.http.post("http://192.168.31.133:3000/display/graph",this.month).subscribe(res=>{
-      
+        
         var temp=res.json();
         for(let l=0;l<temp.length;l++)
         {
